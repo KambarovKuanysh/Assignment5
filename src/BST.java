@@ -118,4 +118,44 @@ public class BST<K extends Comparable<K>, V>  {
 
         return list;
     }
+    private int countHeight(Node current){
+        if(current == null) {
+            return 0;
+        } else {
+            return 1 + Math.max(countHeight(current.left), countHeight(current.right));
+        }
+    }
+    public int countHeight(){
+        return countHeight(root);
+    }
+    public ArrayList<Node> inOrderTraversal() {
+        ArrayList<Node> nodeList = new ArrayList<>();
+        inOrderTraversal(root, nodeList);
+        return nodeList;
+    }
+
+    private void inOrderTraversal(Node node, ArrayList<Node> nodeList) {
+        if (node == null) {
+            return;
+        }
+
+        inOrderTraversal(node.left, nodeList);
+        nodeList.add(node);
+        inOrderTraversal(node.right, nodeList);
+    }
+
+
+    public boolean contains(K key, V value){
+        return contains(root, key, value);
+    }
+    public boolean contains(Node node, K key, V value){
+        if(node == null){
+            return false;
+        }
+        if (node.key.equals(key) && node.value.equals(value)){
+            return true;
+        }
+        return contains(node.left, key, value) || contains(node.right, key, value);
+    }
+
 }
