@@ -16,14 +16,15 @@ public class Main {
         System.out.println("1) 4 ,D");
         System.out.println("2) 10, E");
 
+        System.out.println(bst.contains(4, "D"));
+        System.out.println(bst.contains(10, "E"));
+
         Iterable it = bst.iterator();
         for(Object el: it) {
             System.out.println(el);
         }
 
 
-        System.out.println(bst.contains(4, "D"));
-        System.out.println(bst.contains(10, "E"));
 
         System.out.println("Value at key 5: " + bst.get(5));
         System.out.println("Value at key 2: " + bst.get(2));
